@@ -1,0 +1,8 @@
+moduleset = os.path.expanduser('~/buzztard/jhbuild/buzztard.modules')
+modules = [ 'buzztard-all' ]
+checkoutroot = os.path.expanduser('~/buzztard/jhbuild/build')
+prefix = os.path.expanduser('~/buzztard/jhbuild/install')
+
+autogenargs = ''
+
+os.environ['ACLOCAL'] = 'aclocal -I ' + prefix + '/share/aclocal/'

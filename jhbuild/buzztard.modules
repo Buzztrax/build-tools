@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="no"?> <!--*- mode: nxml -*-->
+
+<!DOCTYPE moduleset SYSTEM "moduleset.dtd">
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+  <repository type="svn" name="buzztard" href="https://buzztard.svn.sourceforge.net/svnroot/buzztard/trunk/buzztard"/>
+  <repository type="svn" name="gst-buzztard" href="https://buzztard.svn.sourceforge.net/svnroot/buzztard/trunk/gst-buzztard"/>
+
+  <autotools id="gst-buzztard">
+    <branch repo="gst-buzztard" module="gst-buzztard" checkoutdir="gst-buzztard"/>
+  </autotools>
+
+  <autotools id="buzztard">
+    <dependencies>
+      <dep package="gst-buzztard"/>
+    </dependencies>
+    <branch repo="buzztard" module="buzztard" checkoutdir="buzztard"/>
+  </autotools>
+
+  <metamodule id="buzztard-all">
+    <dependencies>
+      <dep package="gst-buzztard"/>
+      <dep package="buzztard"/>
+    </dependencies>
+  </metamodule>
+
+</moduleset>
