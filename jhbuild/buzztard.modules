@@ -8,7 +8,6 @@
   <repository type="svn" name="bml" href="https://buzztard.svn.sourceforge.net/svnroot/buzztard/trunk/bml"/>
   <repository type="svn" name="buzzmachines" href="https://buzztard.svn.sourceforge.net/svnroot/buzztard/trunk/buzzmachines"/>
   <repository type="svn" name="bsl" href="https://buzztard.svn.sourceforge.net/svnroot/buzztard/trunk/bsl"/>
-  <repository type="svn" name="gstbml" href="https://buzztard.svn.sourceforge.net/svnroot/buzztard/trunk/gstbml"/>
 
   <autotools id="bml">
     <branch repo="bml" module="bml" checkoutdir="bml"/>
@@ -19,6 +18,9 @@
   </autotools>
 
   <autotools id="gst-buzztard">
+    <dependencies>
+      <dep package="bsl"/>
+    </dependencies>
     <branch repo="gst-buzztard" module="gst-buzztard" checkoutdir="gst-buzztard"/>
   </autotools>
 
@@ -36,12 +38,6 @@
     <branch repo="bsl" module="bsl" checkoutdir="bsl"/>
   </autotools>
 
-  <autotools id="gstbml">
-    <dependencies>
-      <dep package="bsl"/>
-    </dependencies>
-    <branch repo="gstbml" module="gstbml" checkoutdir="gstbml"/>
-  </autotools>
 
   <metamodule id="buzztard-all">
     <dependencies>
@@ -50,7 +46,6 @@
       <dep package="gst-buzztard"/>
       <dep package="buzztard"/>
       <dep package="bsl"/>
-      <dep package="gstbml"/>
     </dependencies>
   </metamodule>
 
