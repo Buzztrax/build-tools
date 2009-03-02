@@ -10,37 +10,36 @@
   </autotools>
 
   <autotools id="buzzmachines">
+    <dependencies>
+      <dep package="bml"/>
+    </dependencies>
     <branch repo="buzztard" module="buzztard/trunk/buzzmachines" checkoutdir="buzzmachines"/>
   </autotools>
 
   <autotools id="gst-buzztard">
-    <after>
-      <dep package="bsl"/>
-    </after>
+    <dependencies>
+      <dep package="buzzmachines"/>
+    </dependencies>
     <branch repo="buzztard" module="buzztard/trunk/gst-buzztard" checkoutdir="gst-buzztard"/>
   </autotools>
 
   <autotools id="buzztard">
-    <after>
+    <dependencies>
       <dep package="gst-buzztard"/>
-    </after>
+    </dependencies>
     <branch repo="buzztard" module="buzztard/trunk/buzztard" checkoutdir="buzztard"/>
   </autotools>
 
   <autotools id="bsl">
-    <after>
+    <dependencies>
       <dep package="buzztard"/>
-    </after>
+    </dependencies>
     <branch repo="buzztard" module="buzztard/trunk/bsl" checkoutdir="bsl"/>
   </autotools>
 
 
   <metamodule id="buzztard-all">
     <dependencies>
-      <dep package="bml"/>
-      <dep package="buzzmachines"/>
-      <dep package="gst-buzztard"/>
-      <dep package="buzztard"/>
       <dep package="bsl"/>
     </dependencies>
   </metamodule>
