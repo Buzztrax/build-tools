@@ -7,4 +7,4 @@ autogenargs = ''
 
 os.environ['ACLOCAL'] = 'aclocal -I ' + prefix + '/share/aclocal/'
 os.environ['GST_PLUGIN_PATH'] = prefix + '/lib/gstreamer-0.10/'
-
+os.environ['XDG_DATA_DIRS'] = os.environ['XDG_DATA_DIRS'] + ":" + prefix + '/share/'
