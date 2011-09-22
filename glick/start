@@ -1,0 +1,13 @@
+#!/bin/sh
+
+prefix=/proc/self/fd/1023
+
+export GST_PLUGIN_PATH="$GST_PLUGIN_PATH:$prefix/lib/gstreamer-0.10"
+export OMF_DIR="$OMF_DIR:$prefix/share/omf"
+export LD_LIBRARY_PATH="$prefix/lib:$LD_LIBRARY_PATH"
+ 
+if [ -z $XDG_DATA_DIRS ]; then export XDG_DATA_DIRS="/usr/share"; fi
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:$prefix/share"
+
+$prefix/bin/buzztard-edit
+

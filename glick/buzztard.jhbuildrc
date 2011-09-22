@@ -1,0 +1,11 @@
+moduleset = os.path.expanduser('~/projects/buzztard/build-tools/jhbuild/buzztard.modules')
+modules = [ 'buzztard-all' ]
+checkoutroot = os.path.expanduser('~/projects/buzztard/glick/build')
+prefix = '/proc/self/fd/1023'
+
+autogenargs='--disable-static'
+
+os.environ['ACLOCAL'] = 'aclocal -I ' + prefix + '/share/aclocal/'
+os.environ['GST_PLUGIN_PATH'] = prefix + '/lib/gstreamer-0.10/'
+os.environ['XDG_DATA_DIRS'] = os.environ['XDG_DATA_DIRS'] + ":" + prefix + '/share/'
+
