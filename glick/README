@@ -9,5 +9,5 @@ http://people.gnome.org/~alexl/glick/
 
 2.) mkdir install
 
-3.) glick-shell ./install/ .&run.sh
+3.) glick-shell ./install/ ./run.sh
 
