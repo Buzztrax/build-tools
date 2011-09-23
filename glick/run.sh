@@ -11,9 +11,9 @@ build_module ()
   else
     svn co https://$1/$2 $2
     cd $2
-    ./autogen.sh --prefix=/proc/self/fd/1023 --disable-static
+    ./autogen.sh --prefix=/proc/self/fd/1023 --disable-static --disable-debug
   fi
-  make && make install
+  make && make install-strip
   cd ..
 }
 
@@ -29,6 +29,14 @@ build_module buzzmachines.svn.sourceforge.net/svnroot/buzzmachines/trunk buzzmac
 cd ..
 
 cp start install/
+chmod a+rx install/start
+rm -rf install/include
+rm -f install/lib/*.a
+rm -rf install/lib/pkgconfig
+rm -rf install/lib/girrepository
+find install -name "*.la" -delete
+rm -rf install/share/gir
+
 sudo glick-mkext2 image.ext2 install
 mkglick buzztard.glick image.ext2 --icon ./install/share/icons/gnome/48x48/apps/buzztard.png --desktop-file ./install/share/applications/buzztard-edit.desktop
 
