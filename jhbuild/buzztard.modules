@@ -3,44 +3,30 @@
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
 <?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
 <moduleset>
-  <repository type="svn" name="buzztard" href="https://buzztard.svn.sourceforge.net/svnroot/"/>
+  <repository type="git" name="buzztard" href="git://buzztard.git.sourceforge.net/gitroot/buzztard"/>
 
   <autotools id="bml">
-    <branch repo="buzztard" module="buzztard/trunk/bml" checkoutdir="bml"/>
-  </autotools>
-
-  <autotools id="buzzmachines">
-    <dependencies>
-      <dep package="bml"/>
-    </dependencies>
-    <branch repo="buzztard" module="buzztard/trunk/buzzmachines" checkoutdir="buzzmachines"/>
+    <branch repo="buzztard" module="bml" checkoutdir="bml"/>
   </autotools>
 
   <autotools id="gst-buzztard">
     <dependencies>
-      <dep package="buzzmachines"/>
+      <dep package="bml"/>
     </dependencies>
-    <branch repo="buzztard" module="buzztard/trunk/gst-buzztard" checkoutdir="gst-buzztard"/>
+    <branch repo="buzztard" module="gst-buzztard" checkoutdir="gst-buzztard"/>
   </autotools>
 
   <autotools id="buzztard">
     <dependencies>
       <dep package="gst-buzztard"/>
     </dependencies>
-    <branch repo="buzztard" module="buzztard/trunk/buzztard" checkoutdir="buzztard"/>
-  </autotools>
-
-  <autotools id="bsl">
-    <dependencies>
-      <dep package="buzztard"/>
-    </dependencies>
-    <branch repo="buzztard" module="buzztard/trunk/bsl" checkoutdir="bsl"/>
+    <branch repo="buzztard" module="buzztard" checkoutdir="buzztard"/>
   </autotools>
 
 
   <metamodule id="buzztard-all">
     <dependencies>
-      <dep package="bsl"/>
+      <dep package="buzztard"/>
     </dependencies>
   </metamodule>
 
