@@ -3,6 +3,7 @@
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
 <?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
 <moduleset>
+  <repository type="svn" name="buzztard-svn" href="https://buzztard.svn.sourceforge.net/svnroot/"/>
   <repository type="git" name="buzztard" href="git://buzztard.git.sourceforge.net/gitroot/buzztard"/>
 
   <autotools id="bml">
@@ -23,10 +24,15 @@
     <branch repo="buzztard" module="buzztard" checkoutdir="buzztard"/>
   </autotools>
 
+  <autotools id="buzzmachines">
+    <branch repo="buzztard-svn" module="buzztard/trunk/buzzmachines" checkoutdir="buzzmachines"/>
+  </autotools>
+
 
   <metamodule id="buzztard-all">
     <dependencies>
       <dep package="buzztard"/>
+      <dep package="buzzmachines"/>
     </dependencies>
   </metamodule>
 
