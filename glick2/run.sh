@@ -1,6 +1,6 @@
 #!/bin/sh
 
-build_module ()
+build_svn_module ()
 {
   if test -d $2; then
     cd $2
@@ -14,14 +14,27 @@ build_module ()
   cd ..
 }
 
+build_git_module ()
+{
+  if test -d $2; then
+    cd $2
+    git pull
+  else
+    git clone git://$1/$2
+    cd $2
+    ./autogen.sh --prefix=/opt/bundle --disable-static --disable-debug
+  fi
+  make && make install-strip DESTDIR=$PWD/../../install
+  cd ..
+}
+
 mkdir -p build; cd build
 
-build_module buzztard.svn.sourceforge.net/svnroot/buzztard/trunk bml
-build_module buzztard.svn.sourceforge.net/svnroot/buzztard/trunk gst-buzztard
-build_module buzztard.svn.sourceforge.net/svnroot/buzztard/trunk buzztard
-build_module buzztard.svn.sourceforge.net/svnroot/buzztard/trunk bsl
+build_git_module buzztard.git.sourceforge.net/gitroot/buzztard bml
+build_git_module buzztard.git.sourceforge.net/gitroot/buzztard gst-buzztard
+build_git_module buzztard.git.sourceforge.net/gitroot/buzztard buzztard
 
-build_module buzzmachines.svn.sourceforge.net/svnroot/buzzmachines/trunk buzzmachines
+build_svn_module buzzmachines.svn.sourceforge.net/svnroot/buzzmachines/trunk buzzmachines
 
 cd ..
 
@@ -33,7 +46,7 @@ rm -rf install/opt/bundle/share/gir
 find install/opt/bundle/ -name "*.la" -delete
 
 rm -f buzztard.bundle
-glick-mkbundle -i org.buzztard.buzztard -v 0.6 -e bin/buzztard-edit \
+glick-mkbundle -i org.buzztard.buzztard -v 0.7 -e bin/buzztard-edit \
    -E /share/mime-info -E /share/icons -E /share/applications \
    ./install/opt/bundle buzztard.bundle
 
