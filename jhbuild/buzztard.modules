@@ -3,8 +3,8 @@
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
 <?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
 <moduleset>
-  <repository type="svn" name="buzzmachines-svn" href="https://buzzmachines.svn.sourceforge.net/svnroot/"/>
-  <repository type="git" name="buzztard" href="git://buzztard.git.sourceforge.net/gitroot/buzztard"/>
+  <repository type="svn" name="buzzmachines-svn" href="https://buzzmachines.svn.sf.net/svnroot/"/>
+  <repository type="git" name="buzztard" href="git://git.code.sf.net/p/buzztard/buzztard"/>
 
   <autotools id="bml">
     <branch repo="buzztard" module="bml" checkoutdir="bml"/>
