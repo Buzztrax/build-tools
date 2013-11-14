@@ -1,0 +1,196 @@
+<?xml version="1.0" standalone="no"?> <!--*- mode: nxml -*-->
+
+<!DOCTYPE moduleset SYSTEM "moduleset.dtd">
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+  <repository type="git" name="github" 
+              href="https://github.com/"/>
+  <repository type="git" name="gstreamer.freedesktop.org" 
+              href="git://anongit.freedesktop.org/gstreamer/"/>
+  <repository type="tarball" name="ftp.gnome.org" 
+              href="http://ftp.gnome.org"/>
+  <repository type="tarball" name="cairographics.org"
+              href="http://cairographics.org"/>
+  <repository type="tarball" name="sourceware.org"
+              href="ftp://sourceware.org"/>
+
+  <autotools id="gstreamer-1.0"
+             autogenargs="--disable-tests --disable-fatal-warnings"
+             supports-non-srcdir-builds="no">
+    <branch repo="gstreamer.freedesktop.org"
+            module="gstreamer"
+            revision="1.1.90"
+            checkoutdir="gstreamer-1.0"/>
+  </autotools>
+
+  <autotools id="gst-plugins-base-1.0"
+             autogenargs="--disable-tests --disable-fatal-warnings"
+             supports-non-srcdir-builds="no">
+    <dependencies>
+      <dep package="gstreamer-1.0"/>
+    </dependencies>
+    <branch repo="gstreamer.freedesktop.org"
+            module="gst-plugins-base"
+            revision="1.1.90"
+            checkoutdir="gst-plugins-base-1.0"/>
+  </autotools>
+
+  <autotools id="cairo" autogen-sh="configure">
+    <dependencies>
+      <dep package="fontconfig"/>
+      <dep package="pixman"/>
+    </dependencies>
+    <branch module="releases/cairo-1.12.8.tar.xz" version="1.12.8"
+            repo="cairographics.org"
+            hash="sha256:8fbb6fc66117ab4100bad830cb4479497e53c6f3facb98bf05c8d298554ebdd9"
+            md5sum="8b3dcade859c44fb7e56fc68edfe9a45">
+    </branch>
+  </autotools>
+
+  <autotools id="pixman" autogen-sh="configure"
+             autogenargs="--enable-gtk=no">
+    <branch module="releases/pixman-0.24.0.tar.gz" version="0.24.0"
+            repo="cairographics.org"
+            hash="sha256:a5647c7158f103eedff5fba799018f4169f6b26b573ab7685812ebc9a1c5d2e4"
+            md5sum="a2d0b120509bdccb10aa7f4bec3730e4">
+    </branch>
+  </autotools>
+
+  <tarball id="freetype6">
+    <source href="download.savannah.gnu.org/releases/freetype/freetype-2.4.2.tar.bz2" version="2.4.2"
+            hash="sha256:9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe"
+            md5sum="647ee8ed266f9a4117c8d0a4855b3d3e"/>
+  </tarball>
+
+  <autotools id="libffi" autogen-sh="configure">
+    <branch module="/pub/libffi/libffi-3.0.10.tar.gz" version="3.0.10"
+             repo="sourceware.org"
+             hash="sha256:f01eb9027e9eb56aeaeef636649877756d475d714ef8b47f627f65bc5f3b492f"
+             md5sum="79390673f5d07a8fb342bc09b5055b6f"/>
+  </autotools>
+
+  <autotools id="gdk-pixbuf" autogen-sh="configure"
+             autogenargs="--disable-introspection">
+    <dependencies>
+      <dep package="glib"/>
+    </dependencies>
+    <branch module="/pub/GNOME/sources/gdk-pixbuf/2.26/gdk-pixbuf-2.26.5.tar.xz" version="2.26.5"
+            repo="ftp.gnome.org"
+            hash="sha256:77696fd163bca95a130a1883dbd78d0ae4d782de2fc85a9a38556d13681f5c84"
+            md5sum="339329e6d619ee3e1cb93979111b04c0"/>
+  </autotools>
+
+  <autotools id="gtk+" autogen-sh="configure"
+             autogenargs="--disable-introspection">
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="cairo"/>
+      <dep package="gdk-pixbuf"/>
+    </dependencies>
+    <branch module="/pub/GNOME/sources/gtk+/3.4/gtk+-3.4.2.tar.xz" version="3.4.2"
+            repo="ftp.gnome.org"
+            hash="sha256:b1ab72bc61434418160ff0c7edfd93c74758ed8a35e2ed3d07e3e218c2705480"
+            md5sum="9e20443fbaa3ba3e9cbd2fc44d6be121"/>
+  </autotools>
+
+  <autotools id="glib"
+             autogen-sh="configure"
+             autogenargs="--disable-dtrace">
+    <dependencies>
+      <dep package="libffi"/>
+    </dependencies>
+    <branch module="/pub/GNOME/sources/glib/2.35/glib-2.35.2.tar.xz" version="2.35.2"
+            repo="ftp.gnome.org"
+            hash="sha256:84fffa2041850352b83a7b27c127f1c4e8b3d169aa3a000b100820ba10f8c19e"/>
+  </autotools>
+
+  <autotools id="cogl"
+           autogen-sh="configure"
+           autogenargs="--disable-introspection">
+    <branch hash="sha256:4e7b5abbf0a1e51d74618db1b513551e7c71b486e17e98373f4db93e7710e2f2" module="/pub/GNOME/sources/cogl/1.12/cogl-1.12.0.tar.xz" repo="ftp.gnome.org" size="1295520" version="1.12.0"/>
+    <pkg-config/>
+    <branch revision="cogl-1.12.0"/>
+    <dependencies>
+      <dep package="glib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="json-glib"
+           autogen-sh="configure"
+           autogenargs="--disable-introspection">
+    <branch hash="sha256:b816a5fa3e5664b08679a6972a6e5693d6cc1990ff4a6f94c07554db96be94a7" module="/pub/GNOME/sources/json-glib/0.14/json-glib-0.14.2.tar.xz" repo="ftp.gnome.org" size="445396" version="0.14.2"/>
+    <branch revision="json-glib-0-14"/>
+    <dependencies>
+      <dep package="glib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="clutter"
+           autogen-sh="configure"
+           autogenargs="--disable-introspection">
+    <branch hash="sha256:a213c7859051d6d19b5550c7e433757a35aa8e2b61a43d2eae83dd87912ea8ae" module="/pub/GNOME/sources/clutter/1.16/clutter-1.16.0.tar.xz" repo="ftp.gnome.org" size="5199388" version="1.16.0"/>
+    <branch revision="clutter-1.16.0"/>
+    <dependencies>
+      <dep package="cogl"/>
+      <dep package="glib"/>
+      <dep package="cairo"/>
+      <dep package="json-glib"/>
+      <dep package="atk"/>
+    </dependencies>
+
+  </autotools>
+
+  <autotools id="clutter-gtk"
+           autogen-sh="configure"
+           autogenargs="--disable-introspection">
+    <branch hash="sha256:bc3108594a01a08bb6d9b538afe995e4fd78634a8356064ee8137d87aad51b2e" module="/pub/GNOME/sources/clutter-gtk/1.4/clutter-gtk-1.4.4.tar.xz" repo="ftp.gnome.org" size="311192" version="1.4.4"/>
+    <branch revision="clutter-gtk-1.0"/>
+    <dependencies>
+      <dep package="clutter"/>
+      <dep package="gtk+"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="atk"
+           autogen-sh="configure"
+           autogenargs="--disable-introspection">
+    <branch hash="sha256:ac118ef34ef5490fa113cf50cffdff7735d6293723bf35df958a89fbda876313" module="/pub/GNOME/sources/atk/2.5/atk-2.5.3.tar.xz" repo="ftp.gnome.org" size="608588" version="2.5.3"/>
+    <dependencies>
+      <dep package="glib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="bml">
+    <branch repo="github" module="Buzztrax/bml.git" checkoutdir="bml"/>
+  </autotools>
+
+  <autotools id="gst-buzztrax">
+    <dependencies>
+      <dep package="gstreamer-1.0"/>
+      <dep package="gst-plugins-base-1.0"/>
+      <dep package="bml"/>
+    </dependencies>
+    <branch repo="github" module="Buzztrax/gst-buzztrax.git" checkoutdir="gst-buzztrax"/>
+  </autotools>
+
+  <autotools id="buzztrax">
+    <dependencies>
+      <dep package="gst-buzztrax"/>
+      <dep package="clutter-gtk"/>
+    </dependencies>
+    <branch repo="github" module="Buzztrax/buzztrax.git" checkoutdir="buzztrax"/>
+  </autotools>
+
+  <autotools id="buzzmachines">
+    <branch repo="github" module="Buzztrax/buzzmachines.git" checkoutdir="buzzmachines"/>
+  </autotools>
+
+
+  <metamodule id="buzztrax-all">
+    <dependencies>
+      <dep package="buzztrax"/>
+      <dep package="buzzmachines"/>
+    </dependencies>
+  </metamodule>
+
+</moduleset>
