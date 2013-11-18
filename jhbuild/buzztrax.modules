@@ -37,7 +37,6 @@
 
   <autotools id="cairo" autogen-sh="configure">
     <dependencies>
-      <dep package="fontconfig"/>
       <dep package="pixman"/>
     </dependencies>
     <branch module="releases/cairo-1.12.8.tar.xz" version="1.12.8"
@@ -55,12 +54,6 @@
             md5sum="a2d0b120509bdccb10aa7f4bec3730e4">
     </branch>
   </autotools>
-
-  <tarball id="freetype6">
-    <source href="download.savannah.gnu.org/releases/freetype/freetype-2.4.2.tar.bz2" version="2.4.2"
-            hash="sha256:9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe"
-            md5sum="647ee8ed266f9a4117c8d0a4855b3d3e"/>
-  </tarball>
 
   <autotools id="libffi" autogen-sh="configure">
     <branch module="/pub/libffi/libffi-3.0.10.tar.gz" version="3.0.10"
@@ -128,7 +121,7 @@
   <autotools id="clutter"
            autogen-sh="configure"
            autogenargs="--disable-introspection">
-    <branch hash="sha256:e75130a5df6dbe97e8d350259278331c6352b2d213230712127160e42053e558" module="/pub/GNOME/sources/clutter/1.12/clutter-1.12.0.tar.xz" repo="ftp.gnome.org" size="5009984" version="1.12.0"/>
+    <branch hash="sha256:1599432d5ea79b0260cdea72803784d3b94ee14de2722ad29eefbe75975630f2" module="/pub/GNOME/sources/clutter/1.10/clutter-1.10.6.tar.xz" repo="ftp.gnome.org" version="1.10.6"/>
     <branch revision="clutter-1.12.0"/>
     <dependencies>
       <dep package="cogl"/>
@@ -142,8 +135,8 @@
   <autotools id="clutter-gtk"
            autogen-sh="configure"
            autogenargs="--disable-introspection">
-    <branch hash="sha256:ee50538daca9447be6ad1ed0d049fbb2dc5a1bcaecd13fda847b9b66f922ee37" module="/pub/GNOME/sources/clutter-gtk/1.3/clutter-gtk-1.3.2.tar.xz" repo="ftp.gnome.org" size="309668" version="1.3.2"/>
-    <branch revision="clutter-gtk-1.0"/>
+    <branch hash="sha256:8be5deb0fa2f318e5f5e888b8ace3371c516464472a48f25c8b42ccc298af59a" module="/pub/GNOME/sources/clutter-gtk/1.2/clutter-gtk-1.2.0.tar.xz" repo="ftp.gnome.org" version="1.2.0"/>
+    <branch revision="clutter-gtk-1.2"/>
     <dependencies>
       <dep package="clutter"/>
       <dep package="gtk+"/>
@@ -172,7 +165,7 @@
     <branch repo="github" module="Buzztrax/gst-buzztrax.git" checkoutdir="gst-buzztrax"/>
   </autotools>
 
-  <autotools id="buzztrax">
+  <autotools id="buzztrax" supports-parallel-builds="no">
     <dependencies>
       <dep package="gst-buzztrax"/>
       <dep package="clutter-gtk"/>
