@@ -35,6 +35,18 @@
             checkoutdir="gst-plugins-base-1.0"/>
   </autotools>
 
+  <autotools id="gst-plugins-good-1.0"
+             autogenargs="--disable-tests --disable-fatal-warnings"
+             supports-non-srcdir-builds="no">
+    <dependencies>
+      <dep package="gstreamer-1.0"/>
+    </dependencies>
+    <branch repo="gstreamer.freedesktop.org"
+            module="gst-plugins-good"
+            revision="1.1.90"
+            checkoutdir="gst-plugins-good-1.0"/>
+  </autotools>
+
   <autotools id="cairo" autogen-sh="configure">
     <dependencies>
       <dep package="pixman"/>
@@ -160,6 +172,7 @@
     <dependencies>
       <dep package="gstreamer-1.0"/>
       <dep package="gst-plugins-base-1.0"/>
+      <dep package="gst-plugins-good-1.0"/>
       <dep package="bml"/>
     </dependencies>
     <branch repo="github" module="Buzztrax/gst-buzztrax.git" checkoutdir="gst-buzztrax"/>
