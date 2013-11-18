@@ -165,7 +165,7 @@
     <branch repo="github" module="Buzztrax/gst-buzztrax.git" checkoutdir="gst-buzztrax"/>
   </autotools>
 
-  <autotools id="buzztrax" supports-parallel-builds="no">
+  <autotools id="buzztrax" supports-parallel-builds="no" autogenargs="--disable-debug">
     <dependencies>
       <dep package="gst-buzztrax"/>
       <dep package="clutter-gtk"/>
