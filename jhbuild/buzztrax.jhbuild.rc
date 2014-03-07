@@ -10,6 +10,7 @@ autogenargs = ''
 addpath('ACLOCAL',  'aclocal -I ' + prefix + '/share/aclocal/')
 addpath('GST_PLUGIN_PATH_1_0', prefix + '/lib/gstreamer-1.0/')
 addpath('XDG_DATA_DIRS', prefix + '/share/')
+addpath('XDG_DATA_DIRS', '/usr/share/')
 addpath('PKG_CONFIG_PATH', os.path.expanduser(prefix + '/lib/pkgconfig'))
 
 # this needs to be the system pkg-config :/
