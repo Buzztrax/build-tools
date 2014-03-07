@@ -90,7 +90,7 @@
     <branch repo="github" module="Buzztrax/bml.git" checkoutdir="bml"/>
   </autotools>
 
-  <autotools id="gst-buzztrax">
+  <autotools id="gst-buzztrax" autogenargs="--enable-debug">
     <dependencies>
       <dep package="gstreamer-1.0"/>
       <dep package="gst-plugins-base-1.0"/>
@@ -99,7 +99,7 @@
     <branch repo="github" module="Buzztrax/gst-buzztrax.git" checkoutdir="gst-buzztrax"/>
   </autotools>
 
-  <autotools id="buzztrax" supports-parallel-builds="no" autogenargs="--disable-debug">
+  <autotools id="buzztrax" supports-parallel-builds="no" autogenargs="--enable-debug">
     <dependencies>
       <dep package="gst-buzztrax"/>
       <dep package="gst-plugins-good-1.0"/>
