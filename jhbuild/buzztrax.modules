@@ -69,6 +69,11 @@
     <branch repo="system" version="2.32.0"/>
   </systemmodule>
 
+  <systemmodule id="gsettings-desktop-schemas">
+    <pkg-config>gsettings-desktop-schemas.pc</pkg-config>
+    <branch repo="system" version="3.4.0"/>
+  </systemmodule>
+
   <systemmodule id="gtk+">
     <pkg-config>gtk+-3.0.pc</pkg-config>
     <branch repo="system" version="3.4.0"/>
