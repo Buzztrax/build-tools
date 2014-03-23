@@ -16,6 +16,9 @@
             module="gstreamer"
             revision="1.1.90"
             checkoutdir="gstreamer-1.0"/>
+    <dependencies>
+      <dep package="gtk-doc"/>
+    </dependencies>
   </autotools>
 
   <autotools id="gst-plugins-base-1.0"
@@ -82,6 +85,11 @@
   <systemmodule id="gudev">
     <pkg-config>gudev-1.0.pc</pkg-config>
     <branch repo="system" version="173"/>
+  </systemmodule>
+
+  <systemmodule id="gtk-doc">
+    <pkg-config>gtk-doc.pc</pkg-config>
+    <branch repo="system" version="1.19"/>
   </systemmodule>
 
   <!-- our own modules -->
