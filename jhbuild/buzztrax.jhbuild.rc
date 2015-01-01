@@ -1,6 +1,6 @@
 #import subprocess
 
-moduleset = os.path.expanduser('~/buzztrax/jhbuild/buzztrax.modules')
+moduleset = os.path.expanduser('~/buzztrax/buzztrax.modules')
 modules = [ 'buzztrax-all' ]
 checkoutroot = os.path.expanduser('~/buzztrax/jhbuild/build')
 prefix = os.path.expanduser('~/buzztrax/jhbuild/install')
