@@ -25,12 +25,13 @@ if [ $fail == 1 ]; then
   exit
 fi
 
-REPO=https://raw.githubusercontent.com/Buzztrax/build-tools/master/jhbuild
-curl --remote-name $REPO/buzztrax.modules --remote-name $REPO/buzztrax.jhbuild.rc
-sed -i -e "s#~/buzztrax#$PWD#" buzztrax.jhbuild.rc
-
 cat >build.sh <<SCRIPT
 #!/bin/sh
+
+REPO=https://raw.githubusercontent.com/Buzztrax/build-tools/master/jhbuild
+curl --remote-name \$REPO/buzztrax.modules --remote-name \$REPO/buzztrax.jhbuild.rc
+sed -i -e "s#~/buzztrax#\$PWD#" buzztrax.jhbuild.rc
+
 jhbuild -f $PWD/buzztrax.jhbuild.rc
 if [ \$? != 0 ]; then
   echo "E: build failed"
