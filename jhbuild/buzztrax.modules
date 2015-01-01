@@ -5,24 +5,23 @@
 <moduleset>
   <repository type="git" name="github" 
               href="https://github.com/"/>
-  <repository type="git" name="gstreamer.freedesktop.org" 
-              href="git://anongit.freedesktop.org/gstreamer/"/>
+  <repository type="tarball" name="gstreamer.freedesktop.org" 
+              href="http://gstreamer.freedesktop.org/src/"/>
   <repository type="system" name="system"/>
 
-  <autotools id="gstreamer-1.0"
+  <autotools id="gstreamer-1.0" autogen-sh="configure"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
     <pkg-config>gstreamer-1.0.pc</pkg-config>
     <branch repo="gstreamer.freedesktop.org"
-            module="gstreamer"
-            revision="1.2" version="1.2.0"
-            checkoutdir="gstreamer-1.0"/>
+            module="gstreamer/gstreamer-1.2.0.tar.xz"
+            version="1.2.0"/>
     <dependencies>
       <dep package="gtk-doc"/>
     </dependencies>
   </autotools>
 
-  <autotools id="gst-plugins-base-1.0"
+  <autotools id="gst-plugins-base-1.0" autogen-sh="configure"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
     <pkg-config>gstreamer-plugins-base-1.0.pc</pkg-config>
@@ -30,12 +29,11 @@
       <dep package="gstreamer-1.0"/>
     </dependencies>
     <branch repo="gstreamer.freedesktop.org"
-            module="gst-plugins-base"
-            revision="1.2" version="1.2.0"
-            checkoutdir="gst-plugins-base-1.0"/>
+            module="gst-plugins-base/gst-plugins-base-1.2.0.tar.xz"
+            version="1.2.0"/>
   </autotools>
 
-  <autotools id="gst-plugins-good-1.0"
+  <autotools id="gst-plugins-good-1.0" autogen-sh="configure"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
     <!-- FIXME: no way to skip building this, if it is already installed -->
@@ -43,9 +41,8 @@
       <dep package="gstreamer-1.0"/>
     </dependencies>
     <branch repo="gstreamer.freedesktop.org"
-            module="gst-plugins-good"
-            revision="1.2" version="1.2.0"
-            checkoutdir="gst-plugins-good-1.0"/>
+            module="gst-plugins-good/gst-plugins-good-1.2.0.tar.xz"
+            version="1.2.0"/>
   </autotools>
 
   <systemmodule id="cairo">
