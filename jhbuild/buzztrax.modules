@@ -12,9 +12,10 @@
   <autotools id="gstreamer-1.0"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
+    <pkg-config>gstreamer-1.0.pc</pkg-config>
     <branch repo="gstreamer.freedesktop.org"
             module="gstreamer"
-            revision="1.1.90"
+            revision="1.2"
             checkoutdir="gstreamer-1.0"/>
     <dependencies>
       <dep package="gtk-doc"/>
@@ -24,24 +25,26 @@
   <autotools id="gst-plugins-base-1.0"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
+    <pkg-config>gstreamer-plugins-base.pc</pkg-config>
     <dependencies>
       <dep package="gstreamer-1.0"/>
     </dependencies>
     <branch repo="gstreamer.freedesktop.org"
             module="gst-plugins-base"
-            revision="1.1.90"
+            revision="1.2"
             checkoutdir="gst-plugins-base-1.0"/>
   </autotools>
 
   <autotools id="gst-plugins-good-1.0"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
+    <!-- FIXME: no way to skip building this, if it is already installed -->
     <dependencies>
       <dep package="gstreamer-1.0"/>
     </dependencies>
     <branch repo="gstreamer.freedesktop.org"
             module="gst-plugins-good"
-            revision="1.1.90"
+            revision="1.2"
             checkoutdir="gst-plugins-good-1.0"/>
   </autotools>
 
