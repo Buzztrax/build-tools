@@ -1,4 +1,4 @@
-import subprocess
+#import subprocess
 
 moduleset = os.path.expanduser('~/buzztrax/jhbuild/buzztrax.modules')
 modules = [ 'buzztrax-all' ]
