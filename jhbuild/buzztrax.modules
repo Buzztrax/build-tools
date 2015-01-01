@@ -25,7 +25,7 @@
   <autotools id="gst-plugins-base-1.0"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
-    <pkg-config>gstreamer-plugins-base.pc</pkg-config>
+    <pkg-config>gstreamer-plugins-base-1.0.pc</pkg-config>
     <dependencies>
       <dep package="gstreamer-1.0"/>
     </dependencies>
