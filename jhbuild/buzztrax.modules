@@ -36,7 +36,9 @@
   <autotools id="gst-plugins-good-1.0" autogen-sh="configure"
              autogenargs="--disable-tests --disable-fatal-warnings"
              supports-non-srcdir-builds="no">
-    <!-- FIXME: no way to skip building this, if it is already installed -->
+    <!-- FIXME: gst-plugins-good has no .pc file, we're assuming that if a
+         recent enough base is installed, good is installed as well  -->
+    <pkg-config>gstreamer-plugins-base-1.0.pc</pkg-config>
     <dependencies>
       <dep package="gstreamer-1.0"/>
     </dependencies>
