@@ -25,6 +25,11 @@ if [ $fail == 1 ]; then
   exit
 fi
 
+# TODO(ensonic): do we want to keep buzztrax.jhbuild.rc if it already exists
+# maybe download the new one as buzztrax.jhbuild.rc and compare it.
+# if its the same delete it, otherwise print the diff
+# TODO(ensonic): do we want to run jhbuild sysdeps to check if the pre-
+# requisites are meet? And ev. run with --install to try to get them
 cat >build.sh <<SCRIPT
 #!/bin/sh
 
@@ -38,7 +43,7 @@ if [ \$? != 0 ]; then
   exit
 fi
 echo "I: build finished"
-echo "run the application using ./run.sh"
+echo "I: run the application using ./run.sh"
 SCRIPT
 chmod a+x build.sh
 
